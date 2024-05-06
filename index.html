@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pantero Esportes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 0;
+            padding-top: 0px; /* Espaço superior para separar o conteúdo do início da página */
+            background-color: #f4f4f4;
+            min-height: 100vh; /* Ajuste para ocupar toda a altura da viewport */
+        }
+        header {
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 7px 0; /* Cabeçalho mais fino */
+        }
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 80%;
+            max-width: 600px;
+            margin-top: 70px; /* Espaçamento entre o cabeçalho e as caixas */
+        }
+        .box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: white;
+            margin: 10px;
+            box-shadow: 0 0 0px rgba(0,0,0,0.2);
+            border-radius: 10px;
+            text-decoration: none;
+            color: black;
+        }
+        .box:hover {
+            background-color: #ffffff;
+        }
+        .icon {
+            font-size: 30px;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Imagens/logo123.png" alt="Pantero Esportes Logo" width="150"> <!-- Logo um pouco menor -->
+    </header>
+    <div class="container">
+        <a href="produtos.html" class="box">
+            <i class="fas fa-shopping-basket icon"></i>
+            <div>Produtos</div>
+        </a>
+        <a href="login.html" class="box">
+            <i class="fas fa-user icon"></i>
+            <div>Login</div>
+        </a>
+        <a href="registro.html" class="box">
+            <i class="fas fa-user-plus icon"></i>
+            <div>Registro</div>
+        </a>
+        <a href="carrinho.html" class="box">
+            <i class="fas fa-shopping-cart icon"></i>
+            <div>Carrinho</div>
+        </a>
+    </div>
+</body>
+</html>

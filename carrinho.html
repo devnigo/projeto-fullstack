@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrinho - Pantero Esportes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 0px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        header img {
+            cursor: pointer;
+            width: 150px;
+        }
+        .container {
+            width: 80%;
+            margin: 20px auto;
+        }
+        .cart-item {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+        .cart-product {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .cart-price {
+            color: #666;
+        }
+        .remove-item {
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Imagens/logo123.png" alt="Pantero Esportes Logo" onclick="window.location='index.html'">
+    </header>
+    <div class="container" id="cartContainer">
+        <!-- Os itens do carrinho serão carregados aqui -->
+    </div>
+
+    <script>
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        function loadCartItems() {
+            const container = document.getElementById('cartContainer');
+            container.innerHTML = ''; // Limpa os conteúdos anteriores
+            if (cart.length === 0) {
+                container.innerHTML = '<p>O carrinho está vazio.</p>';
+                return;
+            }
+            cart.forEach((item, index) => {
+                const itemElement = document.createElement('div');
+                itemElement.classList.add('cart-item');
+                itemElement.innerHTML = `
+                    <div class="cart-header">
+                        <span class="cart-product">${item.productName}</span>
+                        <span class="cart-price">R$ ${item.price.toFixed(2)}</span>
+                    </div>
+                    <div><button class="remove-item" onclick="removeItem(${index})">Remover</button></div>
+                `;
+                container.appendChild(itemElement);
+            });
+        }
+
+        function removeItem(index) {
+            cart.splice(index, 1); // Remove o item do carrinho
+            localStorage.setItem('cart', JSON.stringify(cart)); // Atualiza o carrinho no localStorage
+            loadCartItems(); // Recarrega a lista de itens
+        }
+
+        document.addEventListener('DOMContentLoaded', loadCartItems);
+    </script>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Pantero Esportes</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding-top: 20px;
+            background-color: #f4f4f4;
+            min-height: 100vh;
+        }
+        header {
+            width: 100%;
+            background: #ffffff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            text-align: center;
+            padding: 10px 0;
+            position: relative;
+        }
+        header img {
+            cursor: pointer;
+            width: 150px;
+        }
+        .register-form {
+            width: 300px;
+            margin: 50px auto;
+            background: #fff;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            border-radius: 5px;
+        }
+        input[type="email"], input[type="password"], input[type="text"], input[type="submit"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        input[type="submit"] {
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+        .user-welcome {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="Imagens/logo123.png" alt="Pantero Esportes Logo" onclick="window.location='index.html'">
+        <div class="user-welcome">
+            Bem-vindo, <span id="userNameDisplay">Visitante</span>
+        </div>
+    </header>
+    <div class="register-form">
+        <h2>Registro</h2>
+        <form onsubmit="handleRegister(event)">
+            <input type="text" name="fullName" placeholder="Nome Completo" required>
+            <input type="email" name="email" placeholder="Email" required>
+            <input type="password" name="password" placeholder="Senha" required>
+            <input type="password" name="confirmPassword" placeholder="Confirme a Senha" required>
+            <input type="submit" value="Registrar">
+        </form>
+    </div>
+
+    <script>
+        function handleRegister(event) {
+            event.preventDefault(); // Evita o envio do formulário
+            const fullName = document.querySelector('[name="fullName"]').value;
+            localStorage.setItem('userName', fullName); // Armazena o nome do usuário
+            updateWelcomeMessage(fullName); // Atualiza a mensagem de boas-vindas
+            window.location.href = 'index.html'; // Redireciona para a página inicial
+        }
+
+        function updateWelcomeMessage(name) {
+            document.getElementById('userNameDisplay').textContent = name;
+        }
+        
+        window.onload = function() {
+            const storedName = localStorage.getItem('userName');
+            if (storedName) {
+                updateWelcomeMessage(storedName);
+            }
+        };
+    </script>
+</body>
+</html>
